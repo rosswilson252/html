@@ -1,0 +1,28 @@
+{
+    "name": "rosswilson252/html",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ross Wilson"
+        },
+        {
+            "name": "Taylor Otwell",
+            "email": "taylorotwell@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/http": "~5.0",
+        "illuminate/session": "~5.0",
+        "illuminate/support": "~5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rosswilson252\\Html\\": ""
+        },
+        "files": [
+            "helpers.php"
+        ]
+    },
+    "minimum-stability": "dev"
+}
