@@ -21,9 +21,12 @@ class HtmlServiceProvider extends ServiceProvider {
 		$this->registerHtmlBuilder();
 
 		$this->registerFormBuilder();
+        
+        $this->registerTableBuilder();
 
 		$this->app->alias('html', 'Rosswilson252\Html\HtmlBuilder');
 		$this->app->alias('form', 'Rosswilson252\Html\FormBuilder');
+        $this->app->alias('table', 'Rosswilson252\Html\TableBuilder');
 	}
 
 	/**
@@ -53,6 +56,19 @@ class HtmlServiceProvider extends ServiceProvider {
 			return $form->setSessionStore($app['session.store']);
 		});
 	}
+    
+	/**
+	 * Register the table builder instance.
+	 *
+	 * @return void
+	 */
+    protected function registerTableBuilder()
+    {
+        $this->app->bindShared('table', function($app)
+		{
+			return new TableBuilder($app['html']);
+		});
+    }
 
 	/**
 	 * Get the services provided by the provider.
@@ -61,7 +77,7 @@ class HtmlServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array('html', 'form');
+		return array('html', 'form', 'table');
 	}
 
 }
